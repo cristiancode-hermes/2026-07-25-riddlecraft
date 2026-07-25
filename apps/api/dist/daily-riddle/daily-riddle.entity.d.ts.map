@@ -1,0 +1,1 @@
+{"version":3,"file":"daily-riddle.entity.d.ts","sourceRoot":"","sources":["../../src/daily-riddle/daily-riddle.entity.ts"],"names":[],"mappings":"AAQA,OAAO,EAAE,MAAM,EAAE,MAAM,0BAA0B,CAAC;AAElD,qBAEa,WAAW;IAEtB,EAAE,EAAG,MAAM,CAAC;IAGZ,QAAQ,EAAG,MAAM,CAAC;IAIlB,MAAM,CAAC,EAAE,MAAM,CAAC;IAGhB,IAAI,EAAG,MAAM,CAAC;IAGd,eAAe,EAAG,MAAM,CAAC;CAC1B"}

@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "ignoreDeprecations": "6.0",
+    "incremental": false,
+    "composite": false
+  },
+  "exclude": ["node_modules", "dist", "**/*.spec.ts"]
+}

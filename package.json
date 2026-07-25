@@ -1,0 +1,13 @@
+{
+  "name": "riddlecraft",
+  "private": true,
+  "workspaces": [
+    "apps/api",
+    "apps/web"
+  ],
+  "scripts": {
+    "build:api": "npm run build -w apps/api",
+    "build:web": "npm run build -w apps/web",
+    "build": "npm run build:api && npm run build:web"
+  }
+}
