@@ -27,8 +27,8 @@ export class AuthService {
     if (!token) return of(null);
     
     this.loadingSignal.set(true);
-    return this.http.get<{ data: { user: UserProfile } }>('/api/auth/me').pipe(
-      map(res => res.data.user),
+    return this.http.get<{ user: UserProfile }>('/api/auth/me').pipe(
+      map(res => res.user),
       tap(user => {
         this.userSignal.set(user);
         this.loadingSignal.set(false);

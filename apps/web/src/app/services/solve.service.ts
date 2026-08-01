@@ -8,7 +8,7 @@ export class SolveService {
   private readonly http = inject(HttpClient);
 
   startAttempt(riddleId: string): Observable<SolveAttempt> {
-    return this.http.post<{ data: { attempt: SolveAttempt } }>(`/api/riddles/${riddleId}/attempt`, {}).pipe(map(r => r.data.attempt));
+    return this.http.post<{ attempt: SolveAttempt }>(`/api/riddles/${riddleId}/attempt`, {}).pipe(map(r => r.attempt));
   }
 
   submitAnswer(attemptId: string, answer: string): Observable<SubmitAnswerResponse> {
@@ -20,7 +20,7 @@ export class SolveService {
   }
 
   getAttempt(attemptId: string): Observable<SolveAttempt> {
-    return this.http.get<{ data: { attempt: SolveAttempt } }>(`/api/attempts/${attemptId}`).pipe(map(r => r.data.attempt));
+    return this.http.get<{ attempt: SolveAttempt }>(`/api/attempts/${attemptId}`).pipe(map(r => r.attempt));
   }
 
   getHistory(page = 1, limit = 20): Observable<PaginatedResponse<SolveAttempt>> {

@@ -68,7 +68,7 @@ export class AchievementsPageComponent implements OnInit {
   ngOnInit(): void {
     this.achievementService.getAll().subscribe({
       next: (achs) => {
-        this.achievements.set(achs);
+        this.achievements.set(achs.items);
         this.loading.set(false);
       },
       error: () => this.loading.set(false),
@@ -76,7 +76,7 @@ export class AchievementsPageComponent implements OnInit {
 
     this.achievementService.getUserAchievements().subscribe({
       next: (userAchs) => {
-        this.userAchievements.set(new Set(userAchs.map(ua => ua.achievementId)));
+        this.userAchievements.set(new Set(userAchs.items.map(ua => ua.achievementId)));
       },
     });
   }

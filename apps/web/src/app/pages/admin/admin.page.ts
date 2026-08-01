@@ -71,7 +71,7 @@ export class AdminPageComponent implements OnInit {
     });
 
     this.adminService.getDailySchedule().subscribe({
-      next: (s) => this.schedule.set(s),
+      next: (s) => this.schedule.set(s.items),
     });
   }
 }

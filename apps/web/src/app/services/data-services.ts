@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
+import { Observable } from 'rxjs';
 import { LeaderboardResponse, Achievement, UserAchievement, UserProfile, UserStats, Comment, UserSettings, AdminStats, DailyScheduleEntry } from '../interfaces';
 
 @Injectable({ providedIn: 'root' })
@@ -20,12 +20,12 @@ export class LeaderboardService {
 export class AchievementService {
   private readonly http = inject(HttpClient);
 
-  getAll(): Observable<Achievement[]> {
-    return this.http.get<Achievement[]>('/api/achievements');
+  getAll(): Observable<{ items: Achievement[] }> {
+    return this.http.get<{ items: Achievement[] }>('/api/achievements');
   }
 
-  getUserAchievements(): Observable<UserAchievement[]> {
-    return this.http.get<UserAchievement[]>('/api/achievements/user');
+  getUserAchievements(): Observable<{ items: UserAchievement[] }> {
+    return this.http.get<{ items: UserAchievement[] }>('/api/achievements/user');
   }
 }
 
@@ -33,24 +33,24 @@ export class AchievementService {
 export class ProfileService {
   private readonly http = inject(HttpClient);
 
-  getProfile(username: string): Observable<UserStats> {
-    return this.http.get<{ data: UserStats }>(`/api/users/${username}`).pipe(map(r => r.data));
+  getProfile(username: string): Observable<any> {
+    return this.http.get(`/api/users/${username}`);
   }
 
   getSolves(username: string, page = 1): Observable<any> {
     return this.http.get(`/api/users/${username}/solves`, { params: { page } as any });
   }
 
-  getAchievements(username: string): Observable<UserAchievement[]> {
-    return this.http.get<UserAchievement[]>(`/api/users/${username}/achievements`);
+  getAchievements(username: string): Observable<{ items: UserAchievement[] }> {
+    return this.http.get<{ items: UserAchievement[] }>(`/api/users/${username}/achievements`);
   }
 
   getSettings(): Observable<UserSettings> {
-    return this.http.get<{ data: UserSettings }>('/api/settings').pipe(map(r => r.data));
+    return this.http.get<UserSettings>('/api/settings');
   }
 
   updateSettings(data: Partial<UserSettings>): Observable<UserSettings> {
-    return this.http.put<{ data: UserSettings }>('/api/settings', data).pipe(map(r => r.data));
+    return this.http.put<UserSettings>('/api/settings', data);
   }
 }
 
@@ -62,8 +62,8 @@ export class AdminService {
     return this.http.get<AdminStats>('/api/admin/stats');
   }
 
-  getReports(): Observable<any[]> {
-    return this.http.get<any[]>('/api/admin/reports');
+  getReports(): Observable<{ items: any[] }> {
+    return this.http.get<{ items: any[] }>('/api/admin/reports');
   }
 
   approveRiddle(id: string): Observable<void> {
@@ -82,8 +82,8 @@ export class AdminService {
     return this.http.post<void>('/api/admin/daily', data);
   }
 
-  getDailySchedule(): Observable<DailyScheduleEntry[]> {
-    return this.http.get<DailyScheduleEntry[]>('/api/admin/daily/schedule');
+  getDailySchedule(): Observable<{ items: DailyScheduleEntry[] }> {
+    return this.http.get<{ items: DailyScheduleEntry[] }>('/api/admin/daily/schedule');
   }
 
   removeDailyRiddle(id: string): Observable<void> {

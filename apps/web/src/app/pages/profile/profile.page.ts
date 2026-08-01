@@ -101,15 +101,15 @@ export class ProfilePageComponent implements OnInit {
     this.username.set(username);
     
     this.profileService.getProfile(username).subscribe({
-      next: (stats) => {
-        this.stats.set(stats);
+      next: (res: any) => {
+        this.stats.set(res.stats);
         this.loading.set(false);
       },
       error: () => this.loading.set(false),
     });
 
     this.profileService.getAchievements(username).subscribe({
-      next: (ach) => this.achievements.set(ach),
+      next: (ach) => this.achievements.set(ach.items),
     });
   }
 }

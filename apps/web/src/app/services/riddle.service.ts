@@ -22,11 +22,11 @@ export class RiddleService {
   }
 
   create(data: any): Observable<Riddle> {
-    return this.http.post<{ data: { riddle: Riddle } }>('/api/riddles', data).pipe(map(r => r.data.riddle));
+    return this.http.post<{ riddle: Riddle }>('/api/riddles', data).pipe(map(r => r.riddle));
   }
 
   update(id: string, data: any): Observable<Riddle> {
-    return this.http.put<{ data: { riddle: Riddle } }>(`/api/riddles/${id}`, data).pipe(map(r => r.data.riddle));
+    return this.http.put<{ riddle: Riddle }>(`/api/riddles/${id}`, data).pipe(map(r => r.riddle));
   }
 
   delete(id: string): Observable<void> {

@@ -1,13 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AuthService } from './services/auth.service';
-import { ThemeService } from './services/theme.service';
 import { ToastService } from './services/toast.service';
-import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterModule, NgClass],
+  imports: [RouterModule],
   template: `
     <router-outlet></router-outlet>
     @if (toastService.messages().length > 0) {
