@@ -1,0 +1,7 @@
+QA testing complete for 2026-07-25
+Project: RiddleCraft
+Build: ✅ API + Angular Web (Tailwind v4)
+Tests: Auth flow verified (login/register/me)
+New tests: N/A (no test runner configured)
+Issues: 12 response mapping bugs fixed (frontend expects {data:...} wrapper, backend returns raw objects)
+Published: ✅ Excel (Row 59), ✅ Caddy (riddlecraft.proyectos.cristiancode.dev)
